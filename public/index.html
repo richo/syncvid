@@ -1,24 +1,30 @@
 <head>
   <title>SyncVid</title>
   <script src="/syncvid_player.js"></script>
+  <script src="/syncvid_websocket.js"></script>
   <link rel="stylesheet" href="/syncvid.css" type="text/css" />
 </head>
 <body>
   <div class="row">
     <div id="player" class="column grid_8">
       <input type="file" accept="video/*"/>
+      <!-- Hidden for the time being, implementation detail -->
+      <input type="hidden" id="wsserver" value="ws://elektra.local:8080" />
+      <!-- TODO                                                        ^^ use route to specify group-->
       <video id="videobj" controls></video>
     </div>
     <div class="column grid_4">
       <pre>
-        <div id="logger">sample content</div>
+        <div id="logger"></div>
       </pre>
     </div>
   </div>
   <div class="row">
     <div id="controls" class="column grid_8">
-      controls go here
+      <input type="button" value="play" onclick="ws_send_data('PLAY');"/>
+      <input type="button" value="pause" onclick=" ws_send_data('PAUSE');"/>
     </div>
   </div>
 </body>
 <script>localFileVideoPlayerInit(window, document)</script>
+<script>websocketInit(window, document)</script>

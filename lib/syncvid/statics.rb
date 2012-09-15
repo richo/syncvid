@@ -1,4 +1,3 @@
-require 'pry'
 require 'evma_httpserver'
 class SyncVid::StaticServer < EventMachine::Connection
 
