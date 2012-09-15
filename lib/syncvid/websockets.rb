@@ -1,41 +1,50 @@
 require 'em-websocket'
+require 'pry'
 module SyncVid
+
   $socketpool = Hash.new do |hash, k|
     hash[k] = ClientPool.new
   end
 
   WebSocketServer = Proc.new do |ws|
 
+    # No send(:include to be seen...
+    hack_n_patch(ws)
+
     ws.onopen do
+      ws.pool << ws
     end
 
     ws.onclose do
-      pool.delete ws
+      ws.pool.delete ws
     end
 
     ws.onerror do
-      pool.delete ws
+      ws.pool.delete ws
     end
 
     ws.onmessage do |msg|
       puts "Got #{msg}"
+      command, data = msg.split(":", 2)
 
-      command, data = parse(msg)
-      pool.handle(command, data)
+      ws.pool.handle(command, data)
     end
-  end
-
-  # Epic hack until we come up with a reasonable mechanism for what to do here
-  def clientkey
-    "buttslol"
-  end
-
-  def pool
-    $socketpool[clientkey]
   end
 
   def parse(msg)
     return msg.split(":", 2)
+  end
+
+  def hack_n_patch(socket)
+    def socket.pool
+      # Nils will dump people in a sort of default channel. I'm unconvinced this
+      # is a bad thing
+      $socketpool[channel]
+    end
+
+    def socket.channel
+      request["query"]["channel"]
+    end
   end
 
 end
