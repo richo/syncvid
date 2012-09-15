@@ -1,31 +1,107 @@
-.grid_1 { width:60px; }
-.grid_2 { width:140px; }
-.grid_3 { width:220px; }
-.grid_4 { width:300px; }
-.grid_5 { width:380px; }
-.grid_6 { width:460px; }
-.grid_7 { width:540px; }
-.grid_8 { width:620px; }
-.grid_9 { width:700px; }
-.grid_10 { width:780px; }
-.grid_11 { width:860px; }
-.grid_12 { width:940px; }
+/*
+ * *
+ * * Easy Percentage Grid System
+ * *
+ * * Copyright (c) 2011 Alen Grakalic (http://cssglobe.com)
+ * * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * * and GPL (GPL-LICENSE.txt) licenses.
+ * *
+ * * Brought to you by Easy Framework (http://easyframework.com)
+ * *
+ * * supported by Templatica (http://templatica.com)
+ * * and Css Globe (http://cssglobe.com)
+ * *
+ * */
 
-.column {
-  float: left;
-  margin: 0 10px;
-  overflow: hidden;
-  display: inline;
+
+/* common */
+
+.left{float:left;margin-right:1em;}
+.right{float:right;margin-left:1em;}
+.center{text-align:center;}
+
+.clear{clear:both;}
+.block{display:block;overflow:hidden;clear:both;}
+.first{margin-left:0 !important;}
+.last{margin-right:0 !important;}
+.top{margin-top:0 !important;}
+.bottom{margin-bottom:0 !important;}
+.hidden, .print{display:none;}
+.graphic{
+    margin:0;
+    padding:0;
+    display:block;
+    overflow:hidden;
+    text-indent:-8000px;
 }
-.row {
-  width: 960px;
-  margin: 0 auto;
-  overflow: hidden;
+
+
+/* layout */
+
+#container{  /* fixed width */
+    margin:0 auto;
+    width:920px;
+    text-align:left;
+    position:relative;
 }
-pre {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+#container2{     /* fluid width */
+    margin:0 auto;
+    min-width:760px;
+    max-width:1240px;
+    text-align:left;
+    position:relative;
 }
+#container>header, #container2>header{
+    position:relative;
+    padding:2em 0;
+    margin-bottom:1.5em;
+    border-bottom:1px solid #ccc;
+}
+footer{
+    position:relative;
+    clear:both;
+    padding:2em 0;
+    border-top:1px solid #ccc;
+}
+
+/* percentage based grid */
+
+/*
+ *          class name .cols used for column containers
+ *                      class name .col used for individual columns
+ *                              */
+
+.cols{margin-bottom:1.5em;overflow:hidden;} /* main column container class */
+.col, .col2, .col3, .col4, .col5{
+    float:left;
+    display:inline;
+    margin-left:2%;
+    background:#f1f1f1; /* only for demo purposes - remove this line */
+}
+.cols .first, .col:first-child{margin-left:none !important;}
+.col{width:49%;} /* 2 equal width columns - default */
+.cols3 .col{width:32%;} /* 3 equal width columns */
+.cols4 .col{width:23.5%;} /* 4 equal width columns */
+.cols5 .col{width:18.4%;} /* 5 equal width columns */
+.cols6 .col{width:15%;} /* 6 equal width columns */
+
+/* double width columns */
+.cols3 .col2{width:66%;}
+.cols4 .col2{width:49%;}
+.cols5 .col2{width:38.8%;}
+.cols6 .col2{width:32%;}
+
+/* triple width columns */
+.cols4 .col3{width:74.5%;}
+.cols5 .col3{width:59.2%;}
+.cols6 .col3{width:49%;}
+
+/* quadruple width columns */
+.cols5 .col4{width:79.6%;}
+.cols6 .col4{width:66%;}
+
+/* quintuple width columns */
+.cols6 .col5{width:83%;}
+
+/* percentage based grid */
+
