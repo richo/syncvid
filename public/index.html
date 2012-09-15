@@ -6,11 +6,10 @@
 </head>
 <body>
   <div class="row">
-    <div id="player" class="column grid_8">
-      <input type="file" accept="video/*"/>
+    <div id="player" class="column grid_9">
       <video id="videobj" controls></video>
     </div>
-    <div class="column grid_4">
+    <div class="column grid_3">
       <pre>
         <div id="logger"></div>
       </pre>
@@ -18,6 +17,7 @@
   </div>
   <div class="row">
     <div id="controls" class="column grid_8">
+      <input type="file" accept="video/*"/>
       <input type="button" value="play" onclick="syncvid_play()"/>
       <input type="button" value="pause" onclick="syncvid_pause()"/>
     </div>
