@@ -1,5 +1,4 @@
 require 'em-websocket'
-require 'pry'
 module SyncVid
 
   $socketpool = Hash.new do |hash, k|
