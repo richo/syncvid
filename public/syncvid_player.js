@@ -57,3 +57,15 @@ function localFileVideoPlayerInit(window, document) {
     inputNode = document.querySelector('input');
     inputNode.addEventListener('change', notifyServerOfSelection, false);
 };
+
+function syncvid_play() {
+  name = window.__user_name;
+  ws_send_data('TELL:'+name+' has hit play');
+  ws_send_data('PLAY');
+
+}
+function syncvid_pause() {
+  name = window.__user_name;
+  ws_send_data('TELL:'+name+' has hit pause');
+  ws_send_data('PAUSE');
+}
