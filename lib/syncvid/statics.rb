@@ -19,7 +19,7 @@ class SyncVid::StaticServer < EventMachine::Connection
 
   def initialize_routes!
     # Default route for index
-    @routes = { "/" => "index.html" }
+    @routes = { "/" => "public/index.html" }
     Dir["public/**"].each  do |f|
       route = f.gsub /^public\//, "/"
       @routes[route] = f
