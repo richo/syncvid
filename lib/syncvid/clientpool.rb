@@ -20,9 +20,7 @@ module SyncVid
     # Don't use send() since we accept arbitrary commands
     #
 
-    def handle(msg)
-      command, data = msg.split(":", 2)
-      puts "handling for '#{command}', '#{data}'"
+    def handle(command, data)
       case command
       when "TELL"
 

@@ -7,7 +7,6 @@ module SyncVid
   WebSocketServer = Proc.new do |ws|
 
     ws.onopen do
-      pool << ws
     end
 
     ws.onclose do
@@ -20,7 +19,9 @@ module SyncVid
 
     ws.onmessage do |msg|
       puts "Got #{msg}"
-      pool.handle(msg)
+
+      command, data = parse(msg)
+      pool.handle(command, data)
     end
   end
 
@@ -31,6 +32,10 @@ module SyncVid
 
   def pool
     $socketpool[clientkey]
+  end
+
+  def parse(msg)
+    return msg.split(":", 2)
   end
 
 end
