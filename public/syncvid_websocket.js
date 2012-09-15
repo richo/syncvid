@@ -1,6 +1,6 @@
 function log(data) {
   var log    = document.querySelector("#logger");
-  log.innerHTML = data + "\n" + log.innerHTML;t
+  log.innerHTML = data + "\n" + log.innerHTML;
 }
 
 function websocketInit(window, document) {
@@ -58,6 +58,10 @@ function ws_send_data(data) {
   return false;
 }
 
-
-
-
+function send_chat_message() {
+  var name = window.__user_name;
+  input = document.querySelector("#chat");
+  ws_send_data("TELL:"+name+" says: "+input.value);
+  input.value = ""
+  return false
+}

@@ -12,6 +12,9 @@
     <div class="column grid_3">
       <pre>
         <div id="logger"></div>
+        <form id="chatform" onsubmit="return send_chat_message()">
+          <input id="chat" type="text">
+        </form>
       </pre>
     </div>
   </div>
@@ -25,3 +28,4 @@
 </body>
 <script>localFileVideoPlayerInit(window, document)</script>
 <script>websocketInit(window, document)</script>
+<!-- <script>chatFormInit(window, document)</script> -->
