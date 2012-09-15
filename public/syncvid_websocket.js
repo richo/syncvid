@@ -4,6 +4,8 @@ function log(data) {
 }
 
 function websocketInit(window, document) {
+  // Jump in here to set the window URL
+  document.querySelector("#url-shower").innerHTML += "http://"+window.location.hostname+":8000/?channel="+window.__user_channel;
   var player = document.querySelector("#videobj");
   var name = window.__user_name;
   var channel = window.__user_channel;
