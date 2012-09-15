@@ -26,7 +26,8 @@ function websocketInit(window, document) {
   }
 
   if ("WebSocket" in window) {
-    ws = new WebSocket(document.querySelector("#wsserver").value);
+    ws_host = "ws://"+window.location.hostname+":8080/?channel="+channel;
+    ws = new WebSocket(ws_host);
     ws.onopen = function(event) {
       ws.send("TELL:"+name + " has joined");
     };
