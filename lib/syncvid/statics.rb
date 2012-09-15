@@ -26,12 +26,24 @@ class SyncVid::StaticServer < EventMachine::Connection
     end
   end
 
+  def content_type_for(file)
+    case file
+    when /\.js$/
+      "text/javascript"
+    when /\.html$/
+      "text/html"
+    else
+      "text/plain"
+    end
+  end
+
 private
 
   def send_response(file)
     EventMachine::DelegatedHttpResponse.new(self).tap do |res|
       res.status = 200
       res.content = File.open(file).read
+      res.content_type(content_type_for(file))
       res.send_response
     end
   end
