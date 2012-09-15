@@ -4,8 +4,21 @@
   <link rel="stylesheet" href="/syncvid.css" type="text/css" />
 </head>
 <body>
-  <div id="message"></div>
-  <input type="file" accept="video/*"/>
-  <video controls autoplay></video>
-  <script>localFileVideoPlayerInit(window)</script>
+  <div class="row">
+    <div id="player" class="column grid_8">
+      <input type="file" accept="video/*"/>
+      <video id="videobj" controls></video>
+    </div>
+    <div class="column grid_4">
+      <pre>
+        <div id="logger">sample content</div>
+      </pre>
+    </div>
+  </div>
+  <div class="row">
+    <div id="controls" class="column grid_8">
+      controls go here
+    </div>
+  </div>
 </body>
+<script>localFileVideoPlayerInit(window, document)</script>

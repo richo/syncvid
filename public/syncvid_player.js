@@ -1,10 +1,10 @@
-function localFileVideoPlayerInit(win) {
-    var URL = win.URL || win.webkitURL;
+function localFileVideoPlayerInit(window, document) {
+    var URL = window.URL || window.webkitURL;
     displayMessage = (function displayMessageInit() {
-      var node = document.querySelector('#message');
+      var node = document.querySelector('#logger');
 
       return function displayMessage(message, isError) {
-        node.innerHTML = message;
+        node.innerHTML += "\n" + message;
         node.className = isError ? 'error' : 'info';
       };
     }());
