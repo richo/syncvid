@@ -1,3 +1,4 @@
+require 'pry'
 require 'evma_httpserver'
 class SyncVid::StaticServer < EventMachine::Connection
 
@@ -32,6 +33,8 @@ class SyncVid::StaticServer < EventMachine::Connection
       "text/javascript"
     when /\.html$/
       "text/html"
+    when /\.css$/
+      "text/css"
     else
       "text/plain"
     end
