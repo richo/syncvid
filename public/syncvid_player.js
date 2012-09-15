@@ -13,7 +13,7 @@ function getParameterByName(name)
 function localFileVideoPlayerInit(window, document) {
     // Going to hell for this. Don't care. Too late.
     window.__user_name = getParameterByName("name") || prompt("What's your name?");
-    window.__user_channel = getParameterByName("channel") || prompt("Name for this syncvid session?");
+    window.__user_channel = encodeURIComponent(getParameterByName("channel") || prompt("Name for this syncvid session?"));
 
     name = window.__user_name;
     channel = window.__user_channel;
