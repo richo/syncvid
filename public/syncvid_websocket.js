@@ -1,6 +1,6 @@
 function log(data) {
   var log    = document.querySelector("#logger");
-  log.innerHTML+= "\n"+data;
+  log.innerHTML = data + "\n" + log.innerHTML;t
 }
 
 function websocketInit(window, document) {
